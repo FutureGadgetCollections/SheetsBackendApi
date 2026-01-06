@@ -64,6 +64,13 @@ jobs:
           workload_identity_provider: '${{ env.WORKLOAD_IDENTITY_PROVIDER }}'
           service_account: '${{ env.SERVICE_ACCOUNT }}'
 
+      - name: 'Verify Authentication'
+        run: |-
+          echo "Authenticated as:"
+          gcloud config list account --format "value(core.account)"
+          echo "Project:"
+          gcloud config get-value project
+
       # BEGIN - Docker auth and build
       #
       # If you already have a container image, you can omit these steps.
