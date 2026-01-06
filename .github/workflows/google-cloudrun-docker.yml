@@ -38,7 +38,8 @@ env:
   PROJECT_ID: 'future-gadget-labs-483502' # TODO: update to your Google Cloud project ID
   REGION: 'us-central1' # TODO: update to your region
   SERVICE: 'sheets-backend-api' # TODO: update to your service name
-  WORKLOAD_IDENTITY_PROVIDER: 'projects/957536135168/locations/global/workloadIdentityPools/github/providers/github-provider' # TODO: update to your workload identity provider
+  WORKLOAD_IDENTITY_PROVIDER: 'projects/957536135168/locations/global/workloadIdentityPools/github/providers/my-repo2' # TODO: update to your workload identity provider
+  SERVICE_ACCOUNT: 'sa-github-actions@future-gadget-labs-483502.iam.gserviceaccount.com'
 
 jobs:
   deploy:
@@ -61,6 +62,7 @@ jobs:
         uses: 'google-github-actions/auth@f112390a2df9932162083945e46d439060d66ec2' # google-github-actions/auth@v2
         with:
           workload_identity_provider: '${{ env.WORKLOAD_IDENTITY_PROVIDER }}'
+          service_account: '${{ env.SERVICE_ACCOUNT }}'
 
       # BEGIN - Docker auth and build
       #
