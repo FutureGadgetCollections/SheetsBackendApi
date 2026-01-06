@@ -64,12 +64,19 @@ jobs:
           workload_identity_provider: '${{ env.WORKLOAD_IDENTITY_PROVIDER }}'
           service_account: '${{ env.SERVICE_ACCOUNT }}'
 
-      - name: 'Verify Authentication'
+      - name: 'Verify Authentication and Permissions'
         run: |-
-          echo "Authenticated as:"
-          gcloud config list account --format "value(core.account)"
-          echo "Project:"
+          echo "=== Active Account ==="
+          gcloud auth list
+          echo ""
+          echo "=== Project ==="
           gcloud config get-value project
+          echo ""
+          echo "=== Testing Artifact Registry Access ==="
+          gcloud artifacts repositories list --location=${{ env.REGION }} || echo "No access to list repositories"
+          echo ""
+          echo "=== Testing Cloud Run Access ==="
+          gcloud run services list --region=${{ env.REGION }} || echo "No access to list services"
 
       # BEGIN - Docker auth and build
       #
