@@ -76,4 +76,3 @@ Test your deployed endpoint:
 ```bash
 curl https://YOUR-SERVICE-URL/hello
 ```
-
