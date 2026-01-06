@@ -38,7 +38,7 @@ env:
   PROJECT_ID: 'future-gadget-labs-483502' # TODO: update to your Google Cloud project ID
   REGION: 'us-central1' # TODO: update to your region
   SERVICE: 'sheets-backend-api' # TODO: update to your service name
-  WORKLOAD_IDENTITY_PROVIDER: 'projects/957536135168/locations/global/workloadIdentityPools/github/providers/my-rep' # TODO: update to your workload identity provider
+  WORKLOAD_IDENTITY_PROVIDER: 'https://iam.googleapis.com/projects/957536135168/locations/global/workloadIdentityPools/github/providers/github-provider' # TODO: update to your workload identity provider
 
 jobs:
   deploy:
